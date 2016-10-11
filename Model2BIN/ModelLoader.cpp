@@ -44,38 +44,42 @@ ModelLoader::~ModelLoader() {
 }
 
 Entity *ModelLoader::processMesh(aiMesh inMesh, const aiScene* inScene) {
-	EntityProperties newProp;
 	Entity* newEnt = new Entity;
 //	std::vector<Texture*> textures = std::vector<Texture*>();
-	newProp.indexSize = inMesh.mNumFaces * 3;
 
-	newProp.indices = new unsigned int[inMesh.mNumFaces * 3];
+	unsigned int index_size = inMesh.mNumFaces * 3;
+	unsigned int vertex_count = inMesh.mNumVertices;
+
+	void* indices = new unsigned int[inMesh.mNumFaces * 3];
+	void* vertices;
+	void* normals;
 
 	int j = -1;
 	for (unsigned int i = 0; i < inMesh.mNumFaces; i++) {
 		aiFace face = inMesh.mFaces[i];
+		
 		for(unsigned int k = 0; k < face.mNumIndices; k++)
-			newProp.indices[++j] = face.mIndices[k];
+			((unsigned int*) indices)[++j] = face.mIndices[k];
 	}
 
-
+	
 	if (inMesh.HasPositions()) {
-		newProp.vertices = new float[inMesh.mNumVertices * 3];
+		vertices =  malloc(inMesh.mNumVertices * 3 * 4);
 		int j = -1;
 		for (unsigned int i = 0; i < inMesh.mNumVertices; i++) {
-			newProp.vertices[++j] = inMesh.mVertices[i].x;
-			newProp.vertices[++j] = inMesh.mVertices[i].y;
-			newProp.vertices[++j] = inMesh.mVertices[i].z;
+			((float*) vertices)[++j] = inMesh.mVertices[i].x;
+			((float*) vertices)[++j] = inMesh.mVertices[i].y;
+			((float*) vertices)[++j] = inMesh.mVertices[i].z;
 		}
 	}
 	
 	if (inMesh.HasNormals()) {
-		newProp.normals = new float[inMesh.mNumVertices * 3];
+		normals = malloc(inMesh.mNumVertices * 3 * 4);
 		int j = -1;
 		for (unsigned int i = 0; i < inMesh.mNumVertices; i++) {
-			newProp.normals[++j] = inMesh.mNormals[i].x;
-			newProp.normals[++j] = inMesh.mNormals[i].y;
-			newProp.normals[++j] = inMesh.mNormals[i].z;
+			((float*)normals)[++j] = inMesh.mNormals[i].x;
+			((float*)normals)[++j] = inMesh.mNormals[i].y;
+			((float*)normals)[++j] = inMesh.mNormals[i].z;
 		}
 	}
 	
@@ -86,7 +90,7 @@ Entity *ModelLoader::processMesh(aiMesh inMesh, const aiScene* inScene) {
 			texCoords[++j] = inMesh.mTextureCoords[0][i].x;
 			texCoords[++j] = inMesh.mTextureCoords[0][i].y;
 		}
-		BufferObject *texBO = new BufferObject(floatPropsTwoD, inMesh.mNumVertices * 2, texCoords);
+//		BufferObject *texBO = new BufferObject(floatPropsTwoD, inMesh.mNumVertices * 2, texCoords);
 //		newEnt->registerBufferObject(texBO);
 
 	}
@@ -107,12 +111,13 @@ Entity *ModelLoader::processMesh(aiMesh inMesh, const aiScene* inScene) {
 	}
 	*/
 
-	newProp.indexSize;
-	newProp.vertexSize = inMesh.mNumVertices;
+	
 
-	BufferObject* indexVbo = new BufferObject(floatPropsOneD, newProp.indexSize, newProp.indices);
-	BufferObject* newVert = new BufferObject(floatProps, newProp.vertexSize*3, newProp.vertices);
-	BufferObject* newNorms = new BufferObject(floatProps, newProp.vertexSize *3, newProp.normals);
+
+
+	BufferObject* indexVbo = new BufferObject(1, sizeof(unsigned int), index_size, indices);
+	BufferObject* newVert = new BufferObject(3, sizeof(float), vertex_count * 3, vertices);
+	BufferObject* newNorms = new BufferObject(3, sizeof(float), vertex_count * 3, normals);
 	newEnt->registerBufferObject(indexVbo);
 	newEnt->registerBufferObject(newVert);
 	newEnt->registerBufferObject(newNorms);

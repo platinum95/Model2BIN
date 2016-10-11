@@ -17,8 +17,12 @@ void Entity::registerBufferObject(BufferObject* toAdd) {
 
 
 #pragma region BufferObject
-BufferObject::BufferObject(BufferObjectProperties boProp, unsigned int _size, void* _data)
-	:  dimension(boProp.dimension), size(_size), data(_data), unitSize(boProp.unitSize) {
+
+BufferObject::BufferObject(unsigned int _dimension, std::size_t _unitSize, unsigned int _size, void * _data) {
+	dimension = _dimension;
+	unitSize = _unitSize;
+	size = _size;
+	data = _data;
 }
 
 

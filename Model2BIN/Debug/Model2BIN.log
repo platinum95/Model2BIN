@@ -1,6 +1,19 @@
-﻿  BinaryLoader.cpp
-BinaryLoader.cpp(21): warning C4018: '<': signed/unsigned mismatch
-BinaryLoader.cpp(41): warning C4018: '<': signed/unsigned mismatch
-  BinaryLoader.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
-  Model2BIN.vcxproj -> c:\users\plati\onedrive\documents\visual studio 2015\Projects\Model2BIN\Debug\Model2BIN.exe
-  Model2BIN.vcxproj -> c:\users\plati\onedrive\documents\visual studio 2015\Projects\Model2BIN\Debug\Model2BIN.pdb (Partial PDB)
+﻿Build started 11/10/2016 21:12:48.
+     1>Project "D:\Projects\c++\VS2015\Model2BIN\Model2BIN\Model2BIN.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ID:\Projects\c++\VS2015\Model2BIN\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib ModelLoader.cpp
+         ModelLoader.cpp
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects\c++\VS2015\Model2BIN\Debug\Model2BIN.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\Projects\c++\VS2015\Model2BIN\libs assimpD.lib /ASSEMBLYRESOURCE:Debug\Model2BIN.MainForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\Projects\c++\VS2015\Model2BIN\Debug\Model2BIN.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\BinaryLoader.obj
+         Debug\Entity.obj
+         Debug\Main.obj
+         Debug\MainForm.obj
+         Debug\ModelLoader.obj
+         "Debug\.NETFramework,Version=v4.5.2.AssemblyAttributes.obj"
+         BinaryLoader.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+         Model2BIN.vcxproj -> D:\Projects\c++\VS2015\Model2BIN\Debug\Model2BIN.exe
+     1>Done Building Project "D:\Projects\c++\VS2015\Model2BIN\Model2BIN\Model2BIN.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.79

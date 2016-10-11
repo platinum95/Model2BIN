@@ -29,18 +29,14 @@ struct EntityProperties {
 #define InstancedVBO 2
 
 struct BufferObject {
-
+public:
 	void* data;
-	unsigned int dimension, size;
+	//size is number of primitives, so byte size is size * unitSize
+	unsigned int dimension, size;	
 	std::size_t unitSize;
-	BufferObject(BufferObjectProperties boProp, unsigned int _size, void* _data);
+	BufferObject(unsigned int _dimension, std::size_t _unitSize, unsigned int _size, void* _data);
 	BufferObject();
-	int VBOtype;
-	inline bool isActive() {return active;}
 	const char* title;
-	
-private:
-	bool active = true;
 };
 
 

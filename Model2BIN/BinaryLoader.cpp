@@ -15,7 +15,7 @@ volatile long BinaryLoader::fileSize = 0;
 
 void BinaryLoader::createFile(const char* outFile, std::vector<BufferObject*> bos){
 	FILE * outFileStream;
-	fopen_s(&outFileStream, outFile, "w");
+	fopen_s(&outFileStream, outFile, "wb");
 	header headerBlock;
 	uint OffsetCount = 0;
 	for (int i = 0; i < bos.size(); i++) {
@@ -24,7 +24,7 @@ void BinaryLoader::createFile(const char* outFile, std::vector<BufferObject*> bo
 			(short)bos[i]->dimension,	//dimension
 			(short)4,					//Data type size
 			OffsetCount,	//offset
-			bos[i]->size * 4		//size
+			bos[i]->size * bos[i]->unitSize		//size
 		};
 		OffsetCount += headerBlock.headerInfo[i].size;
 	}
@@ -40,7 +40,8 @@ void BinaryLoader::createFile(const char* outFile, std::vector<BufferObject*> bo
 	fwrite(&headerBlock, sizeof(header), 1, outFileStream);
 	for (int i = 0; i < bos.size(); i++) {
 		BufferObject* bo = bos[i];
-		fwrite(bos[i]->data, 1, bos[i]->size * bo->unitSize, outFileStream);
+		std::size_t byteSize = bo->size * bo->unitSize;
+		fwrite(bo->data, 1, byteSize, outFileStream);
 	}
 	fclose(outFileStream);
 }
