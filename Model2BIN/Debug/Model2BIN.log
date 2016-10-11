@@ -1,0 +1,6 @@
+﻿  BinaryLoader.cpp
+BinaryLoader.cpp(21): warning C4018: '<': signed/unsigned mismatch
+BinaryLoader.cpp(41): warning C4018: '<': signed/unsigned mismatch
+  BinaryLoader.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  Model2BIN.vcxproj -> c:\users\plati\onedrive\documents\visual studio 2015\Projects\Model2BIN\Debug\Model2BIN.exe
+  Model2BIN.vcxproj -> c:\users\plati\onedrive\documents\visual studio 2015\Projects\Model2BIN\Debug\Model2BIN.pdb (Partial PDB)
